@@ -24,7 +24,7 @@ const Hero = () => {
           </div>
 
           {/* Main Headline */}
-          <h1 className="mb-4 sm:mb-5 lg:mb-6 font-heading">
+          <h1 className="mb-4 sm:mb-5 lg:mb-6 font-heading capitalize">
             <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-[64px] font-bold text-white leading-[1.1] sm:leading-[1.15] tracking-tight">
               Choose
             </span>
@@ -65,7 +65,10 @@ const Hero = () => {
               { number: "6+", label: "Breeds Available" },
               { number: "48hr", label: "Booking Confirmation" },
             ].map((stat, index) => (
-              <div key={index} className="flex items-center gap-4 sm:gap-6 lg:gap-8">
+              <div
+                key={index}
+                className="flex items-center gap-4 sm:gap-6 lg:gap-8"
+              >
                 <div className="text-center">
                   <div className="text-xl sm:text-2xl lg:text-[28px] font-bold font-heading text-accent drop-shadow-lg">
                     {stat.number}
