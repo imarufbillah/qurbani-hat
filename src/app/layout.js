@@ -1,5 +1,6 @@
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/ui/Navbar";
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -23,7 +24,10 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${playfairDisplay.variable} ${inter.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        <main className="container mx-auto bg-background">{children}</main>
+      </body>
     </html>
   );
 }
