@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     >
       <body>
         <Navbar />
-        <main className="container mx-auto bg-background">{children}</main>
+        <main className="bg-background">{children}</main>
       </body>
     </html>
   );

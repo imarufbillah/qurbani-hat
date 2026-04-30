@@ -57,3 +57,39 @@
 @utility bg-gradient-accent-soft {
   background-image: var(--gradient-accent-soft);
 }
+
+/* Hero Section Layers */
+.hero-bg-image {
+  background-image: url("/hero-banner.png");
+  background-position: center 40%;
+}
+
+.hero-gradient-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(45, 80, 22, 0.82) 0%,
+    rgba(45, 80, 22, 0.65) 50%,
+    rgba(30, 55, 10, 0.45) 100%
+  );
+}
+
+.hero-texture {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.03) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+.hero-lottie-glow {
+  background: radial-gradient(
+    circle,
+    rgba(212, 135, 10, 0.18) 0%,
+    transparent 70%
+  );
+}
+
+.hero-btn-shadow {
+  box-shadow: 0 4px 20px rgba(212, 135, 10, 0.4);
+}
