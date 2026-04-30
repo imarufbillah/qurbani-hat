@@ -1,4 +1,4 @@
-import AnimalCard from "../animals/AnimalCard";
+import AnimalsGrid from "../animals/AnimalsGrid";
 
 const FeaturedAnimals = async () => {
   // Fetch all animals from the API
@@ -35,11 +35,7 @@ const FeaturedAnimals = async () => {
         </div>
 
         {/* Featured Animals Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-7">
-          {featuredAnimals.map((animal) => (
-            <AnimalCard animal={animal} key={animal.id} />
-          ))}
-        </div>
+        <AnimalsGrid animalsData={featuredAnimals} />
 
         {/* View All Button */}
         <div className="mt-14 lg:mt-16 text-center">
