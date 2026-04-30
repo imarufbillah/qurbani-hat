@@ -13,7 +13,7 @@ const Hero = () => {
       <div className="absolute inset-0 hero-texture" />
 
       {/* Content Container */}
-      <div className="xl:container mx-auto relative z-10 px-4 sm:px-6 lg:px-8 flex items-center min-h-dvh">
+      <div className="xl:container mx-auto relative z-10 px-4 flex items-center min-h-dvh">
         <div className="w-full max-w-4xl mx-auto lg:mx-0 text-center md:text-left py-8 sm:py-12">
           {/* Top Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-5 lg:mb-6 bg-gradient-accent-soft border border-accent/40 backdrop-blur-sm">

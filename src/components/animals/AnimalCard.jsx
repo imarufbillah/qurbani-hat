@@ -1,0 +1,92 @@
+import { Cake, MapPin, Scale } from "lucide-react";
+import Image from "next/image";
+
+const AnimalCard = ({ animal }) => {
+  const { image, category, type, name, location, weight, age, price } = animal;
+
+  return (
+    <div className="group relative bg-surface border border-border rounded-[14px] overflow-hidden cursor-pointer w-full transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(45,80,22,0.15)] hover:border-accent/40">
+      {/* Image Section */}
+      <div className="relative h-50 w-full overflow-hidden bg-background">
+        <Image
+          src={image}
+          alt={name}
+          width={600}
+          height={300}
+          className="object-cover transition-all duration-300 group-hover:scale-105"
+        />
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+        {/* Category Badge - Top Left */}
+        <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-background font-body text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg border border-primary-hover/20">
+          {category}
+        </div>
+
+        {/* Type Badge - Top Right */}
+        <div className="absolute top-3 right-3 bg-gradient-accent text-primary font-body text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg">
+          {type}
+        </div>
+      </div>
+
+      {/* Card Body */}
+      <div className="p-5">
+        {/* Name */}
+        <h3 className="font-heading text-[18px] font-bold text-heading truncate mb-3.5 group-hover:text-primary transition-colors duration-300">
+          {name}
+        </h3>
+
+        {/* Meta Chips Row */}
+        <div className="flex gap-2 flex-wrap mb-4">
+          {/* Location Chip */}
+          <div className="flex items-center gap-1.5 bg-background border border-border rounded-lg px-2.5 py-1.5 transition-all duration-200 hover:border-accent/30 hover:bg-gradient-accent-soft">
+            <MapPin className="w-3.5 h-3.5 text-muted" />
+            <span className="font-body text-[11px] font-medium text-muted">
+              {location}
+            </span>
+          </div>
+
+          {/* Weight Chip */}
+          <div className="flex items-center gap-1.5 bg-background border border-border rounded-lg px-2.5 py-1.5 transition-all duration-200 hover:border-accent/30 hover:bg-gradient-accent-soft">
+            <Scale className="w-3.5 h-3.5 text-muted" />
+            <span className="font-body text-[11px] font-medium text-muted">
+              {weight} kg
+            </span>
+          </div>
+
+          {/* Age Chip */}
+          <div className="flex items-center gap-1.5 bg-background border border-border rounded-lg px-2.5 py-1.5 transition-all duration-200 hover:border-accent/30 hover:bg-gradient-accent-soft">
+            <Cake className="w-3.5 h-3.5 text-muted" />
+            <span className="font-body text-[11px] font-medium text-muted">
+              {age} yrs
+            </span>
+          </div>
+        </div>
+
+        {/* Price */}
+        <div className="mt-4">
+          <span className="font-body text-[11px] text-muted block mb-1.5 uppercase tracking-wide">
+            Starting from
+          </span>
+          <span className="font-heading text-[24px] font-bold text-accent">
+            <span className="text-[1rem]">৳</span>
+            {price.toLocaleString()}
+          </span>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-border pt-4 mt-4">
+          {/* CTA Button */}
+          <button className="w-full h-11 bg-primary hover:bg-primary-hover text-background font-body text-[13px] font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group/btn shadow-sm hover:shadow-md active:scale-[0.98]">
+            <span>View Details</span>
+            <span className="inline-block transition-transform duration-200 group-hover/btn:translate-x-1">
+              →
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AnimalCard;
