@@ -3,25 +3,16 @@ import AnimalCard from "../animals/AnimalCard";
 const FeaturedAnimals = async () => {
   // Fetch all animals from the API
   const res = await fetch(process.env.ANIMALS_API_URL);
-  const animals = await res.json();
+  const data = await res.json();
+
+  // Extract animals from the API response
+  const animals = data.animals;
 
   //   Filter to get only featured animals
   const featuredAnimals = animals.filter((animal) => animal.featured === true);
 
   return (
     <section className="bg-background py-12 sm:py-16 lg:py-20 relative overflow-hidden">
-      {/* Subtle Background Pattern */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, rgba(45,80,22,0.4) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
-      </div>
-
       <div className="xl:container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-14 lg:mb-16">

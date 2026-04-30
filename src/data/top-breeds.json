@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Sahiwal",
+    "type": "Cow",
+    "weightRange": "300–500 kg",
+    "image": "https://images.unsplash.com/photo-1598514983318-2f64f8f4796c"
+  },
+  {
+    "id": 2,
+    "name": "Holstein Friesian",
+    "type": "Cow",
+    "weightRange": "400–700 kg",
+    "image": "https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8"
+  },
+  {
+    "id": 3,
+    "name": "Red Chittagong",
+    "type": "Cow",
+    "weightRange": "250–400 kg",
+    "image": "https://images.unsplash.com/photo-1563281577-a7be47e20db9"
+  },
+  {
+    "id": 4,
+    "name": "Boer",
+    "type": "Goat",
+    "weightRange": "50–110 kg",
+    "image": "https://images.unsplash.com/photo-1619983081563-430f63602796"
+  },
+  {
+    "id": 5,
+    "name": "Black Bengal",
+    "type": "Goat",
+    "weightRange": "20–35 kg",
+    "image": "https://images.unsplash.com/photo-1583337130417-3346a1be7dee"
+  }
+]

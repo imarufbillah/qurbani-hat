@@ -27,20 +27,16 @@ const QurbaniTips = () => {
 
   return (
     <section className="bg-surface py-12 sm:py-16 lg:py-20 relative overflow-hidden">
-      {/* Subtle Background Accent */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-accent-soft rounded-full blur-3xl opacity-30 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
-
       <div className="xl:container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-14">
           {/* Overline Label */}
           <div className="inline-flex items-center gap-2 mb-4">
-            <div className="w-8 h-0.5 bg-accent" />
+            <div className="w-8 h-0.5 bg-gradient-accent" />
             <span className="font-body text-sm font-semibold text-accent uppercase tracking-wider">
               Expert Advice
             </span>
-            <div className="w-8 h-0.5 bg-accent" />
+            <div className="w-8 h-0.5 bg-gradient-accent" />
           </div>
 
           {/* Main Heading */}
