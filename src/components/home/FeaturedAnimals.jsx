@@ -1,3 +1,4 @@
+import Link from "next/link";
 import AnimalsGrid from "../animals/AnimalsGrid";
 
 const FeaturedAnimals = async () => {
@@ -39,12 +40,15 @@ const FeaturedAnimals = async () => {
 
         {/* View All Button */}
         <div className="mt-14 lg:mt-16 text-center">
-          <button className="inline-flex items-center gap-2.5 border-2 border-primary text-primary bg-transparent font-body text-[15px] font-semibold px-10 py-3.5 rounded-xl transition-all duration-300 hover:bg-primary hover:text-background hover:shadow-lg hover:-translate-y-0.5 active:scale-95 group">
+          <Link
+            href={"/animals"}
+            className="inline-flex items-center gap-2.5 border-2 border-primary text-primary bg-transparent font-body text-[15px] font-semibold px-10 py-3.5 rounded-xl transition-all duration-300 hover:bg-primary hover:text-background hover:shadow-lg hover:-translate-y-0.5 active:scale-95 group"
+          >
             <span>View All Animals</span>
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">
               →
             </span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

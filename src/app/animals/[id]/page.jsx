@@ -1,0 +1,128 @@
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronRight, MapPin, Tag } from "lucide-react";
+import AnimalQuickStats from "@/components/animals/AnimalQuickStats";
+import BookingSection from "@/components/animals/BookingSection";
+import { notFound } from "next/navigation";
+
+const AnimalDetailsPage = async ({ params }) => {
+  const { id } = await params;
+
+  // Fetch animal data
+  const response = await fetch(process.env.ANIMALS_API_URL);
+  const data = await response.json();
+  const animal = data.animals.find((a) => a.id === parseInt(id));
+
+  // If animal not found, show 404
+  if (!animal) {
+    notFound();
+  }
+
+  // Mock authentication status
+  const isLoggedIn = true;
+
+  return (
+    <div className="min-h-dvh bg-background pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 lg:pb-24">
+      <div className="xl:container mx-auto px-4">
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center gap-2 text-sm sm:text-base font-body mb-6 sm:mb-8 lg:mb-10">
+          <Link
+            href="/"
+            className="text-muted hover:text-primary transition-colors duration-200"
+          >
+            Home
+          </Link>
+          <ChevronRight className="w-4 h-4 text-muted" />
+          <Link
+            href="/animals"
+            className="text-muted hover:text-primary transition-colors duration-200"
+          >
+            All Animals
+          </Link>
+          <ChevronRight className="w-4 h-4 text-muted" />
+          <span className="text-body font-medium">{animal.name}</span>
+        </nav>
+
+        {/* Main Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16">
+          {/* Left Column — Image & Quick Info */}
+          <div className="space-y-6">
+            {/* Main Image */}
+            <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden bg-background border-2 border-border shadow-lg">
+              <Image
+                src={animal.image}
+                alt={animal.name}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {/* Quick Stats */}
+            <AnimalQuickStats animal={animal} />
+          </div>
+
+          {/* Right Column — Animal Details */}
+          <div className="space-y-6 lg:space-y-8">
+            {/* Top Information */}
+            <div className="space-y-4">
+              {/* Badges */}
+              <div className="flex items-center gap-3 flex-wrap">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary text-background text-xs sm:text-sm font-semibold rounded-full font-body">
+                  <Tag className="w-3.5 h-3.5" />
+                  {animal.category}
+                </span>
+                <span className="inline-flex items-center px-3 py-1.5 bg-gradient-accent text-primary text-xs sm:text-sm font-bold rounded-full font-body">
+                  {animal.type}
+                </span>
+              </div>
+
+              {/* Animal Name */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-heading">
+                {animal.name}
+              </h1>
+
+              {/* Location */}
+              <div className="flex items-center gap-2 text-muted">
+                <MapPin className="w-5 h-5" />
+                <span className="text-base sm:text-lg font-body">
+                  {animal.location}
+                </span>
+              </div>
+            </div>
+
+            {/* Price Section */}
+            <div className="bg-gradient-accent-soft border-2 border-accent/40 rounded-xl p-6 sm:p-8">
+              <p className="text-sm sm:text-base text-muted font-body mb-2">
+                Price
+              </p>
+              <p className="text-3xl sm:text-4xl lg:text-5xl font-heading font-bold text-primary mb-3">
+                <span className="text-2xl sm:text-3xl lg:text-4xl">৳</span>
+                {animal.price.toLocaleString()}
+              </p>
+              <p className="text-xs sm:text-sm text-muted font-body">
+                Negotiable · Contact for bulk discount
+              </p>
+            </div>
+
+            {/* Description Section */}
+            <div className="space-y-4">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-heading">
+                About This Animal
+              </h2>
+              <p className="text-sm sm:text-base lg:text-lg leading-relaxed text-body font-body">
+                {animal.description}
+              </p>
+            </div>
+
+            {/* Booking Section */}
+            <BookingSection isLoggedIn={isLoggedIn} animalId={animal.id} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AnimalDetailsPage;
