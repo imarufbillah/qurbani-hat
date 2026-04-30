@@ -22,7 +22,7 @@ const FeaturedAnimals = async () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="xl:container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-14 lg:mb-16">
           {/* Decorative Element */}
