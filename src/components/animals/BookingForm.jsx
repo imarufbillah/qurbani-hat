@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Calendar, User, Phone, Mail, MessageSquare } from "lucide-react";
 
-const BookingForm = () => {
+const BookingForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -30,6 +30,10 @@ const BookingForm = () => {
       preferredDate: "",
       message: "",
     });
+    // Call success callback if provided
+    if (onSuccess) {
+      onSuccess();
+    }
   };
 
   return (

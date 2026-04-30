@@ -1,15 +1,26 @@
+"use client";
+
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import BookingForm from "./BookingForm";
+import { toast } from "sonner";
 
 const BookingSection = ({ isLoggedIn }) => {
+  const handleBookingSuccess = () => {
+    toast.success("Booking request submitted successfully!", {
+      description: "We'll contact you soon to confirm your booking.",
+      duration: 5000,
+    });
+  };
+
   if (isLoggedIn) {
     return (
       <div className="bg-surface border-2 border-border rounded-xl p-6 sm:p-8 space-y-6">
         <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-heading">
           Place Your Booking
         </h2>
-        <BookingForm />
+
+        <BookingForm onSuccess={handleBookingSuccess} />
       </div>
     );
   }
