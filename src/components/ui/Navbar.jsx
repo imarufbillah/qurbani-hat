@@ -92,9 +92,14 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-2 lg:gap-3">
             {isPending ? (
               // Loading Skeleton - Desktop
-              <div className="flex items-center gap-2">
-                <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-background/30 animate-pulse" />
-                <div className="h-10 w-24 bg-background/30 rounded-lg animate-pulse" />
+              <div className="flex items-center gap-2 lg:gap-3">
+                {/* Avatar Skeleton */}
+                <div className="flex items-center gap-2 p-1 pr-3 rounded-full bg-background/10 border-2 border-background/30 animate-pulse">
+                  <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-background/30" />
+                  <div className="h-4 w-20 bg-background/30 rounded" />
+                </div>
+                {/* Logout Button Skeleton */}
+                <div className="h-10 w-24 lg:w-28 bg-background/30 rounded-lg animate-pulse" />
               </div>
             ) : session?.user ? (
               // Logged In State - Avatar Link + Logout Button
@@ -202,8 +207,16 @@ const Navbar = () => {
                 {isPending ? (
                   // Loading Skeleton - Mobile
                   <div className="space-y-2">
-                    <div className="h-11 w-full bg-background/30 rounded-lg animate-pulse" />
-                    <div className="h-11 w-full bg-background/30 rounded-lg animate-pulse" />
+                    {/* Profile Card Skeleton */}
+                    <div className="flex items-center gap-3 px-4 py-3 bg-background/10 rounded-xl border-2 border-background/20 animate-pulse">
+                      <div className="w-12 h-12 rounded-full bg-background/30" />
+                      <div className="flex flex-col flex-1 gap-2">
+                        <div className="h-4 w-32 bg-background/30 rounded" />
+                        <div className="h-3 w-40 bg-background/30 rounded" />
+                      </div>
+                    </div>
+                    {/* Logout Button Skeleton */}
+                    <div className="h-12 w-full bg-background/30 rounded-lg animate-pulse" />
                   </div>
                 ) : session?.user ? (
                   // Logged In State (Mobile)
