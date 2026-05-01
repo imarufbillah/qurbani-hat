@@ -16,7 +16,9 @@ const AnimalDetailsPage = async ({ params }) => {
   const { id } = await params;
 
   // Fetch animal data
-  const response = await fetch(process.env.ANIMALS_API_URL);
+  const response = await fetch(process.env.ANIMALS_API_URL, {
+    next: { revalidate: 300 },
+  });
   const data = await response.json();
   const animal = data.animals.find((a) => a.id === parseInt(id));
   const allAnimals = data.animals;

@@ -3,7 +3,9 @@ import AnimalsGrid from "../animals/AnimalsGrid";
 
 const FeaturedAnimals = async () => {
   // Fetch all animals from the API
-  const res = await fetch(process.env.ANIMALS_API_URL);
+  const res = await fetch(process.env.ANIMALS_API_URL, {
+    next: { revalidate: 300 },
+  });
   const data = await res.json();
 
   // Extract animals from the API response

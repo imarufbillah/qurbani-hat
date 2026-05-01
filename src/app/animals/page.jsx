@@ -2,7 +2,9 @@ import AnimalsGrid from "@/components/animals/AnimalsGrid";
 import SortControl from "@/components/animals/SortControl";
 
 const AllAnimalsPage = async ({ searchParams }) => {
-  const response = await fetch(process.env.ANIMALS_API_URL);
+  const response = await fetch(process.env.ANIMALS_API_URL, {
+    next: { revalidate: 300 },
+  });
   const data = await response.json();
   let animals = data.animals;
 

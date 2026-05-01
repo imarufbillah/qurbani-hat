@@ -2,7 +2,9 @@ import BreedCard from "./BreedCard";
 
 const TopBreeds = async () => {
   // Fetch top breeds from the API
-  const res = await fetch(process.env.ANIMALS_API_URL);
+  const res = await fetch(process.env.ANIMALS_API_URL, {
+    next: { revalidate: 300 },
+  });
   const data = await res.json();
 
   // Extract top breeds from the API response
