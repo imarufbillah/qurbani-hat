@@ -2,8 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, Phone, Clock } from "lucide-react";
 import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-const Footer = () => {
+const Footer = async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
     <footer className="bg-primary text-background border-t border-primary-hover/50">
       {/* Main Footer Content */}
@@ -89,30 +95,35 @@ const Footer = () => {
                   All Animals
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/profile"
-                  className="text-background/80 text-sm sm:text-base hover:text-background hover:translate-x-1 inline-block transition-all duration-300"
-                >
-                  My Profile
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="text-background/80 text-sm sm:text-base hover:text-background hover:translate-x-1 inline-block transition-all duration-300"
-                >
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/register"
-                  className="text-background/80 text-sm sm:text-base hover:text-background hover:translate-x-1 inline-block transition-all duration-300"
-                >
-                  Register
-                </Link>
-              </li>
+              {session?.user ? (
+                <li>
+                  <Link
+                    href="/profile"
+                    className="text-background/80 text-sm sm:text-base hover:text-background hover:translate-x-1 inline-block transition-all duration-300"
+                  >
+                    My Profile
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    <Link
+                      href="/login"
+                      className="text-background/80 text-sm sm:text-base hover:text-background hover:translate-x-1 inline-block transition-all duration-300"
+                    >
+                      Login
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/register"
+                      className="text-background/80 text-sm sm:text-base hover:text-background hover:translate-x-1 inline-block transition-all duration-300"
+                    >
+                      Register
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 
