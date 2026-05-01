@@ -164,7 +164,7 @@ const ProfilePage = async () => {
                 {/* Update Profile Button - Desktop */}
                 <div className="hidden sm:block pb-2">
                   <Link
-                    href="/profile/edit"
+                    href="/update-profile"
                     className="inline-flex items-center justify-center gap-2 px-5 py-2.5 lg:px-6 lg:py-3
                                bg-gradient-accent text-primary rounded-lg font-bold font-body text-sm lg:text-base
                                shadow-md hover:shadow-xl
@@ -286,7 +286,7 @@ const ProfilePage = async () => {
               {/* Update Profile Button - Mobile */}
               <div className="sm:hidden border-t-2 border-border pt-6 pb-6">
                 <Link
-                  href="/profile/edit"
+                  href="/update-profile"
                   className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5
                              bg-gradient-accent text-primary rounded-lg font-bold font-body text-base
                              shadow-md hover:shadow-xl
