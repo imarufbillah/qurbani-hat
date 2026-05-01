@@ -9,7 +9,7 @@ import { toast } from "sonner";
 
 const Navbar = () => {
   // Get the current session to determine if the user is logged in
-  const { data: session } = authClient.useSession();
+  const { data: session, isPending } = authClient.useSession();
 
   // State to manage mobile menu visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -106,7 +106,13 @@ const Navbar = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-2 lg:gap-3">
-            {session?.user ? (
+            {isPending ? (
+              // Loading Skeleton - Desktop
+              <div className="flex items-center gap-2 p-1 pr-3 rounded-full bg-background/10 border-2 border-background/30 animate-pulse">
+                <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-background/30" />
+                <div className="w-4 h-4 bg-background/30 rounded" />
+              </div>
+            ) : session?.user ? (
               // Logged In State - Avatar with Dropdown
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -251,7 +257,19 @@ const Navbar = () => {
 
               {/* Mobile Actions */}
               <div className="pt-3 border-t border-primary-hover/50 space-y-2">
-                {session?.user ? (
+                {isPending ? (
+                  // Loading Skeleton - Mobile
+                  <div className="px-4 py-3 bg-background/10 rounded-xl border-2 border-background/20 animate-pulse">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-full bg-background/30" />
+                      <div className="flex flex-col flex-1 gap-2">
+                        <div className="h-4 w-32 bg-background/30 rounded" />
+                        <div className="h-3 w-40 bg-background/30 rounded" />
+                      </div>
+                    </div>
+                    <div className="h-11 w-full bg-background/30 rounded-lg" />
+                  </div>
+                ) : session?.user ? (
                   // Logged In State (Mobile)
                   <>
                     <div className="px-4 py-3 bg-background/10 rounded-xl border-2 border-background/20">
