@@ -1,11 +1,23 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
 
 const GoogleSignInButton = () => {
-  const handleGoogleSignIn = () => {
-    // Handle Google sign-in logic here
-    console.log("Google sign-in clicked");
+  const handleGoogleSignIn = async () => {
+    try {
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
+    } catch (error) {
+      // Only show error if the redirect fails
+      toast.error("Login Failed", {
+        description:
+          error?.message || "Unable to connect to Google. Please try again.",
+      });
+    }
   };
 
   return (
