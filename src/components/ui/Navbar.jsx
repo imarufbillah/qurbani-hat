@@ -6,8 +6,12 @@ import { Menu, X, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  // Router instance for navigation after logout
+  const router = useRouter();
+
   // Get the current session to determine if the user is logged in
   const { data: session, isPending } = authClient.useSession();
 
@@ -22,6 +26,7 @@ const Navbar = () => {
       toast.success("Logged Out", {
         description: "You have been successfully logged out.",
       });
+      router.push("/");
       setIsMenuOpen(false);
     } catch (error) {
       toast.error("Logout Failed", {
