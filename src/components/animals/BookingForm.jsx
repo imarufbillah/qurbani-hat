@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, User, Phone, Mail, MessageSquare } from "lucide-react";
+import { MapPin, User, Phone, Mail, MessageSquare } from "lucide-react";
 
 const BookingForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     name: "",
-    phone: "",
     email: "",
-    preferredDate: "",
+    phone: "",
+    address: "",
     message: "",
   });
 
@@ -25,9 +25,9 @@ const BookingForm = ({ onSuccess }) => {
     // Clear form inputs on submit
     setFormData({
       name: "",
-      phone: "",
       email: "",
-      preferredDate: "",
+      phone: "",
+      address: "",
       message: "",
     });
     // Call success callback if provided
@@ -59,6 +59,31 @@ const BookingForm = ({ onSuccess }) => {
         />
       </div>
 
+      {/* Email Field */}
+      <div className="space-y-2">
+        <label
+          htmlFor="email"
+          className="flex items-center gap-2 text-sm sm:text-base font-medium text-body font-body"
+        >
+          <Mail className="w-4 h-4 text-accent" />
+          Email Address
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          placeholder="Enter your email address"
+          className="w-full px-4 py-3 text-sm sm:text-base font-body
+                     bg-background border-2 border-border rounded-lg
+                     text-body placeholder:text-muted
+                     focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20
+                     transition-all duration-200"
+        />
+      </div>
+
       {/* Phone Field */}
       <div className="space-y-2">
         <label
@@ -84,50 +109,26 @@ const BookingForm = ({ onSuccess }) => {
         />
       </div>
 
-      {/* Email Field */}
+      {/* Address Field */}
       <div className="space-y-2">
         <label
-          htmlFor="email"
+          htmlFor="address"
           className="flex items-center gap-2 text-sm sm:text-base font-medium text-body font-body"
         >
-          <Mail className="w-4 h-4 text-accent" />
-          Email Address
+          <MapPin className="w-4 h-4 text-accent" />
+          Delivery Address
         </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
+        <textarea
+          id="address"
+          name="address"
+          value={formData.address}
           onChange={handleChange}
           required
-          placeholder="Enter your email"
+          rows={3}
+          placeholder="Enter your complete delivery address"
           className="w-full px-4 py-3 text-sm sm:text-base font-body
                      bg-background border-2 border-border rounded-lg
-                     text-body placeholder:text-muted
-                     focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20
-                     transition-all duration-200"
-        />
-      </div>
-
-      {/* Preferred Date Field */}
-      <div className="space-y-2">
-        <label
-          htmlFor="preferredDate"
-          className="flex items-center gap-2 text-sm sm:text-base font-medium text-body font-body"
-        >
-          <Calendar className="w-4 h-4 text-accent" />
-          Preferred Pickup Date
-        </label>
-        <input
-          type="date"
-          id="preferredDate"
-          name="preferredDate"
-          value={formData.preferredDate}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 text-sm sm:text-base font-body
-                     bg-background border-2 border-border rounded-lg
-                     text-body
+                     text-body placeholder:text-muted resize-none
                      focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20
                      transition-all duration-200"
         />

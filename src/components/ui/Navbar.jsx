@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, LogOut, ChevronDown, User } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { Menu, X, LogOut } from "lucide-react";
+import { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 
@@ -13,11 +13,8 @@ const Navbar = () => {
 
   // State to manage mobile menu visibility
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
   const handleLogout = async () => {
     try {
@@ -26,7 +23,6 @@ const Navbar = () => {
         description: "You have been successfully logged out.",
       });
       setIsMenuOpen(false);
-      setIsDropdownOpen(false);
     } catch (error) {
       toast.error("Logout Failed", {
         description: "Unable to log out. Please try again.",
@@ -43,18 +39,6 @@ const Navbar = () => {
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
@@ -108,20 +92,21 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-2 lg:gap-3">
             {isPending ? (
               // Loading Skeleton - Desktop
-              <div className="flex items-center gap-2 p-1 pr-3 rounded-full bg-background/10 border-2 border-background/30 animate-pulse">
-                <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-background/30" />
-                <div className="w-4 h-4 bg-background/30 rounded" />
+              <div className="flex items-center gap-2">
+                <div className="w-9 h-9 lg:w-10 lg:h-10 rounded-full bg-background/30 animate-pulse" />
+                <div className="h-10 w-24 bg-background/30 rounded-lg animate-pulse" />
               </div>
             ) : session?.user ? (
-              // Logged In State - Avatar with Dropdown
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={toggleDropdown}
+              // Logged In State - Avatar Link + Logout Button
+              <>
+                <Link
+                  href="/profile"
                   className="flex items-center gap-2 p-1 pr-3 rounded-full bg-background/10 hover:bg-background/20
                              border-2 border-background/30 hover:border-background/50
                              transition-all duration-200 hover:scale-105 active:scale-95
                              focus:outline-none focus:ring-2 focus:ring-background/50"
-                  aria-label="User menu"
+                  aria-label="Go to profile"
+                  title={session.user.name}
                 >
                   <Image
                     src={session.user.image}
@@ -130,66 +115,23 @@ const Navbar = () => {
                     height={40}
                     className="w-9 h-9 lg:w-10 lg:h-10 rounded-full object-cover border-2 border-background/50"
                   />
-                  <ChevronDown
-                    className={`w-4 h-4 text-background transition-transform duration-200 ${
-                      isDropdownOpen ? "rotate-180" : ""
-                    }`}
-                  />
+                  <span className="text-background text-sm lg:text-base font-medium max-w-32 truncate">
+                    {session.user.name}
+                  </span>
+                </Link>
+
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center gap-2 px-4 lg:px-5 py-2 text-sm lg:text-base text-white bg-danger border-2 border-danger rounded-lg
+                             hover:bg-[#a93226] hover:border-[#a93226]
+                             hover:-translate-y-0.5 hover:shadow-lg
+                             font-semibold transition-all duration-200 active:scale-95"
+                  aria-label="Logout"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span>Logout</span>
                 </button>
-
-                {/* Dropdown Menu */}
-                {isDropdownOpen && (
-                  <div
-                    className="absolute right-0 mt-2 w-64 bg-surface border-2 border-border rounded-xl shadow-xl
-                                  animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden z-50"
-                  >
-                    {/* User Info Section */}
-                    <div className="px-4 py-3 bg-linear-to-br from-primary/5 to-accent/5 border-b border-border">
-                      <div className="flex items-center gap-3">
-                        <Image
-                          src={session.user.image}
-                          alt={session.user.name}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 rounded-full object-cover border-2 border-accent/30"
-                        />
-                        <div className="flex flex-col flex-1 min-w-0">
-                          <span className="text-heading text-sm font-bold truncate">
-                            {session.user.name}
-                          </span>
-                          <span className="text-muted text-xs truncate">
-                            {session.user.email}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Menu Items */}
-                    <div className="py-2">
-                      <Link
-                        href="/profile"
-                        onClick={() => setIsDropdownOpen(false)}
-                        className="w-full px-4 py-2.5 text-left text-sm font-medium text-body hover:text-primary
-                                   hover:bg-gradient-accent-soft transition-all duration-200
-                                   flex items-center gap-3 group"
-                      >
-                        <User className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
-                        <span>Profile</span>
-                      </Link>
-
-                      <button
-                        onClick={handleLogout}
-                        className="w-full px-4 py-2.5 text-left text-sm font-medium text-red-600 hover:text-red-700
-                                   hover:bg-red-50 transition-all duration-200
-                                   flex items-center gap-3 group"
-                      >
-                        <LogOut className="w-4 h-4 text-red-500 group-hover:text-red-700 transition-colors" />
-                        <span>Logout</span>
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
+              </>
             ) : (
               // Logged Out State
               <>
@@ -259,49 +201,47 @@ const Navbar = () => {
               <div className="pt-3 border-t border-primary-hover/50 space-y-2">
                 {isPending ? (
                   // Loading Skeleton - Mobile
-                  <div className="px-4 py-3 bg-background/10 rounded-xl border-2 border-background/20 animate-pulse">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-full bg-background/30" />
-                      <div className="flex flex-col flex-1 gap-2">
-                        <div className="h-4 w-32 bg-background/30 rounded" />
-                        <div className="h-3 w-40 bg-background/30 rounded" />
-                      </div>
-                    </div>
-                    <div className="h-11 w-full bg-background/30 rounded-lg" />
+                  <div className="space-y-2">
+                    <div className="h-11 w-full bg-background/30 rounded-lg animate-pulse" />
+                    <div className="h-11 w-full bg-background/30 rounded-lg animate-pulse" />
                   </div>
                 ) : session?.user ? (
                   // Logged In State (Mobile)
                   <>
-                    <div className="px-4 py-3 bg-background/10 rounded-xl border-2 border-background/20">
-                      <div className="flex items-center gap-3 mb-3">
-                        <Image
-                          src={session.user.image}
-                          alt={session.user.name}
-                          width={48}
-                          height={48}
-                          className="w-12 h-12 rounded-full object-cover border-2 border-background/50"
-                        />
-                        <div className="flex flex-col flex-1 min-w-0">
-                          <span className="text-background text-sm font-bold truncate">
-                            {session.user.name}
-                          </span>
-                          <span className="text-background/70 text-xs truncate">
-                            {session.user.email}
-                          </span>
-                        </div>
+                    <Link
+                      href="/profile"
+                      onClick={toggleMenu}
+                      className="flex items-center gap-3 px-4 py-3 bg-background/10 rounded-xl border-2 border-background/20
+                                 hover:bg-background/20 active:scale-95
+                                 transition-all duration-200"
+                    >
+                      <Image
+                        src={session.user.image}
+                        alt={session.user.name}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-background/50"
+                      />
+                      <div className="flex flex-col flex-1 min-w-0">
+                        <span className="text-background text-sm font-bold truncate">
+                          {session.user.name}
+                        </span>
+                        <span className="text-background/70 text-xs truncate">
+                          {session.user.email}
+                        </span>
                       </div>
+                    </Link>
 
-                      <button
-                        onClick={handleLogout}
-                        className="w-full px-4 py-2.5 text-center text-sm bg-gradient-accent text-primary rounded-lg
-                                   hover:brightness-110 hover:saturate-125 active:scale-95
-                                   font-semibold transition-all duration-200 shadow-md
-                                   flex items-center justify-center gap-2"
-                      >
-                        <LogOut className="w-4 h-4" />
-                        Logout
-                      </button>
-                    </div>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full px-5 py-3 text-center text-sm text-white bg-danger border-2 border-danger rounded-lg
+                                 hover:bg-[#a93226] hover:border-[#a93226] active:scale-95
+                                 font-semibold transition-all duration-200 shadow-md
+                                 flex items-center justify-center gap-2"
+                    >
+                      <LogOut className="w-4 h-4" />
+                      Logout
+                    </button>
                   </>
                 ) : (
                   // Logged Out State (Mobile)
