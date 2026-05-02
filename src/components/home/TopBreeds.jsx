@@ -4,6 +4,7 @@ const TopBreeds = async () => {
   // Fetch top breeds from the API
   const res = await fetch(process.env.ANIMALS_API_URL, {
     next: { revalidate: 300 },
+    cache: "force-cache",
   });
   const data = await res.json();
 

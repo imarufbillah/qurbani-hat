@@ -3,12 +3,17 @@ import SortControl from "@/components/animals/SortControl";
 
 export const metadata = {
   title: "All Animals - Browse Qurbani Livestock | QurbaniHat",
-  description: "Browse our complete collection of Qurbani animals. Filter and sort cows, goats, and sheep by price. Find detailed information on breed, weight, age, and location.",
+  description:
+    "Browse our complete collection of Qurbani animals. Filter and sort cows, goats, and sheep by price. Find detailed information on breed, weight, age, and location.",
 };
+
+// Enable ISR with 5-minute revalidation
+export const revalidate = 300;
 
 const AllAnimalsPage = async ({ searchParams }) => {
   const response = await fetch(process.env.ANIMALS_API_URL, {
     next: { revalidate: 300 },
+    cache: "force-cache",
   });
   const data = await response.json();
   let animals = data.animals;

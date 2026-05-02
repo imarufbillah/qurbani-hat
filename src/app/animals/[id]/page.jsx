@@ -6,11 +6,15 @@ import BookingSection from "@/components/animals/BookingSection";
 import RelatedAnimals from "@/components/animals/RelatedAnimals";
 import { notFound } from "next/navigation";
 
+// Enable ISR with 5-minute revalidation
+export const revalidate = 300;
+
 export async function generateMetadata({ params }) {
   const { id } = await params;
   
   const response = await fetch(process.env.ANIMALS_API_URL, {
     next: { revalidate: 300 },
+    cache: "force-cache",
   });
   const data = await response.json();
   const animal = data.animals.find((a) => a.id === parseInt(id));
@@ -34,6 +38,7 @@ const AnimalDetailsPage = async ({ params }) => {
   // Fetch animal data
   const response = await fetch(process.env.ANIMALS_API_URL, {
     next: { revalidate: 300 },
+    cache: "force-cache",
   });
   const data = await response.json();
   const animal = data.animals.find((a) => a.id === parseInt(id));
