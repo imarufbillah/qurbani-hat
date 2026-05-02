@@ -4,12 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, LogOut } from "lucide-react";
 import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  // Router instance for navigation after logout
+  // Get current pathname for active link styling
+  const pathname = usePathname();
+
   const router = useRouter();
 
   // Get the current session to determine if the user is logged in
@@ -26,8 +28,8 @@ const Navbar = () => {
       toast.success("Logged Out", {
         description: "You have been successfully logged out.",
       });
-      router.push("/");
       setIsMenuOpen(false);
+      router.push("/");
     } catch (error) {
       toast.error("Logout Failed", {
         description: "Unable to log out. Please try again.",
@@ -77,17 +79,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-1 lg:gap-2">
             <Link
               href="/"
-              className="text-background hover:text-white font-medium text-sm lg:text-base px-3 lg:px-4 py-2 rounded-lg
+              className={`text-background hover:text-white font-medium text-sm lg:text-base px-3 lg:px-4 py-2 rounded-lg
                          hover:bg-primary-hover/80 hover:-translate-y-0.5
-                         transition-all duration-200 active:scale-95"
+                         transition-all duration-200 active:scale-95
+                         ${pathname === "/" ? "bg-primary-hover/80 text-white" : ""}`}
             >
               Home
             </Link>
             <Link
               href="/animals"
-              className="text-background hover:text-white font-medium text-sm lg:text-base px-3 lg:px-4 py-2 rounded-lg
+              className={`text-background hover:text-white font-medium text-sm lg:text-base px-3 lg:px-4 py-2 rounded-lg
                          hover:bg-primary-hover/80 hover:-translate-y-0.5
-                         transition-all duration-200 active:scale-95"
+                         transition-all duration-200 active:scale-95
+                         ${pathname.startsWith("/animals") ? "bg-primary-hover/80 text-white" : ""}`}
             >
               All Animals
             </Link>
@@ -190,9 +194,10 @@ const Navbar = () => {
               <Link
                 href="/"
                 onClick={toggleMenu}
-                className="block px-4 py-2.5 text-background hover:text-white rounded-lg font-medium text-sm
+                className={`block px-4 py-2.5 text-background hover:text-white rounded-lg font-medium text-sm
                            hover:bg-primary-hover/80 active:bg-primary-hover
-                           transition-all duration-200"
+                           transition-all duration-200
+                           ${pathname === "/" ? "bg-primary-hover/80 text-white" : ""}`}
               >
                 Home
               </Link>
@@ -200,9 +205,10 @@ const Navbar = () => {
               <Link
                 href="/animals"
                 onClick={toggleMenu}
-                className="block px-4 py-2.5 text-background hover:text-white rounded-lg font-medium text-sm
+                className={`block px-4 py-2.5 text-background hover:text-white rounded-lg font-medium text-sm
                            hover:bg-primary-hover/80 active:bg-primary-hover
-                           transition-all duration-200"
+                           transition-all duration-200
+                           ${pathname.startsWith("/animals") ? "bg-primary-hover/80 text-white" : ""}`}
               >
                 All Animals
               </Link>

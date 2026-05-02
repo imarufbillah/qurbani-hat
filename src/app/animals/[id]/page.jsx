@@ -5,14 +5,8 @@ import AnimalQuickStats from "@/components/animals/AnimalQuickStats";
 import BookingSection from "@/components/animals/BookingSection";
 import RelatedAnimals from "@/components/animals/RelatedAnimals";
 import { notFound } from "next/navigation";
-import { auth } from "@/lib/auth";
-import { headers } from "next/headers";
 
 const AnimalDetailsPage = async ({ params }) => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
   const { id } = await params;
 
   // Fetch animal data
@@ -27,9 +21,6 @@ const AnimalDetailsPage = async ({ params }) => {
   if (!animal) {
     notFound();
   }
-
-  // Mock authentication status
-  const isLoggedIn = session;
 
   return (
     <div className="min-h-dvh bg-background pt-20 sm:pt-24 lg:pt-28 pb-16 sm:pb-20 lg:pb-24">
@@ -135,7 +126,7 @@ const AnimalDetailsPage = async ({ params }) => {
             </div>
 
             {/* Booking Section */}
-            <BookingSection isLoggedIn={isLoggedIn} animalId={animal.id} />
+            <BookingSection animalId={animal.id} />
           </div>
         </div>
 

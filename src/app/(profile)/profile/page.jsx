@@ -1,6 +1,5 @@
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 import {
   Mail,
@@ -19,11 +18,6 @@ const ProfilePage = async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
-
-  // Redirect to login if not authenticated
-  if (!session?.user) {
-    redirect("/login");
-  }
 
   const { user } = session;
 
