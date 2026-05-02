@@ -9,9 +9,6 @@ const Hero = () => {
       {/* Layer 2 — Gradient Overlay */}
       <div className="absolute inset-0 hero-gradient-overlay" />
 
-      {/* Layer 3 — Subtle Texture */}
-      <div className="absolute inset-0 hero-texture" />
-
       {/* Content Container */}
       <div className="xl:container mx-auto relative z-10 px-4 flex items-center min-h-dvh">
         <div className="w-full max-w-4xl mx-auto lg:mx-0 text-center md:text-left py-8 sm:py-12">
@@ -46,7 +43,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center md:justify-start gap-3 sm:gap-3.5 lg:gap-4 mt-7 sm:mt-8 lg:mt-9">
             <Link
               href="/animals"
-              className="w-full sm:w-auto px-6 sm:px-7 lg:px-8 py-3 sm:py-3.5 lg:py-4 text-sm sm:text-[15px] lg:text-base font-bold rounded-lg sm:rounded-xl transition-all duration-200 hover:scale-[1.02] sm:hover:scale-105 hover:brightness-110 active:scale-[0.98] bg-gradient-accent hero-btn-shadow font-body text-primary text-center"
+              className="w-full sm:w-auto px-6 sm:px-7 lg:px-8 py-3 sm:py-3.5 lg:py-4 text-sm sm:text-[15px] lg:text-base font-bold rounded-lg sm:rounded-xl transition-all duration-200 hover:scale-[1.02] sm:hover:scale-105 hover:brightness-110 active:scale-[0.98] bg-gradient-accent shadow-[0_4px_20px_rgba(212,135,10,0.4)] font-body text-primary text-center"
             >
               Browse All Animals →
             </Link>

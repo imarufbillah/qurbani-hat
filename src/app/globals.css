@@ -72,24 +72,3 @@
     rgba(30, 55, 10, 0.45) 100%
   );
 }
-
-.hero-texture {
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.03) 1px,
-    transparent 1px
-  );
-  background-size: 24px 24px;
-}
-
-.hero-lottie-glow {
-  background: radial-gradient(
-    circle,
-    rgba(212, 135, 10, 0.18) 0%,
-    transparent 70%
-  );
-}
-
-.hero-btn-shadow {
-  box-shadow: 0 4px 20px rgba(212, 135, 10, 0.4);
-}
