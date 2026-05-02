@@ -2,30 +2,30 @@
 
 @theme {
   /* Brand Colors */
-  --color-primary: #2d5016;
-  --color-primary-hover: #244010;
+  --color-primary: #047857;
+  --color-primary-hover: #065f46;
 
-  --color-accent: #d4870a;
-  --color-accent-hover: #b87408;
+  --color-accent: #f59e0b;
+  --color-accent-hover: #d97706;
 
   /* Gradients */
   --gradient-accent: linear-gradient(
     135deg,
-    #c27209 0%,
-    #e8961a 30%,
-    #f0b040 60%,
-    #b86a05 100%
+    #f59e0b 0%,
+    #fbbf24 30%,
+    #fcd34d 60%,
+    #d97706 100%
   );
 
   --gradient-accent-soft: linear-gradient(
     135deg,
-    rgba(194, 114, 9, 0.12),
-    rgba(232, 150, 26, 0.18),
-    rgba(176, 100, 5, 0.1)
+    rgba(245, 158, 11, 0.12),
+    rgba(251, 191, 36, 0.18),
+    rgba(217, 119, 6, 0.1)
   );
 
   /* Backgrounds */
-  --color-background: #faf6ee;
+  --color-background: #fefce8;
   --color-surface: #ffffff;
 
   /* Text Colors */
@@ -56,9 +56,9 @@
   --color-info-icon: #2563eb;
 
   /* Shadows */
-  --shadow-primary: rgba(45, 80, 22, 0.12);
-  --shadow-primary-hover: rgba(45, 80, 22, 0.15);
-  --shadow-accent: rgba(212, 135, 10, 0.4);
+  --shadow-primary: rgba(4, 120, 87, 0.12);
+  --shadow-primary-hover: rgba(4, 120, 87, 0.15);
+  --shadow-accent: rgba(245, 158, 11, 0.4);
 
   /* Semantic Aliases */
   --color-card: var(--color-surface);
@@ -101,8 +101,8 @@
 .hero-gradient-overlay {
   background: linear-gradient(
     135deg,
-    rgba(45, 80, 22, 0.82) 0%,
-    rgba(45, 80, 22, 0.65) 50%,
-    rgba(30, 55, 10, 0.45) 100%
+    rgba(4, 120, 87, 0.6) 0%,
+    rgba(4, 120, 87, 0.4) 50%,
+    rgba(6, 95, 70, 0.2) 100%
   );
 }
