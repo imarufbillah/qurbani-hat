@@ -73,7 +73,7 @@ const LoginForm = () => {
                      text-body placeholder:text-muted
                      focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent
                      data-invalid:border-danger data-invalid:focus:border-danger data-invalid:focus:ring-danger/20
-                     data-valid:border-green-500 data-valid:focus:border-green-500 data-valid:focus:ring-green-500/20
+                     data-valid:border-success data-valid:focus:border-success data-valid:focus:ring-success/20
                      transition-all duration-200"
         />
         <FieldError className="text-sm text-danger font-body mt-2 animate-in fade-in slide-in-from-top-1 duration-200" />
@@ -103,7 +103,7 @@ const LoginForm = () => {
                        text-body placeholder:text-muted
                        focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent
                        data-invalid:border-danger data-invalid:focus:border-danger data-invalid:focus:ring-danger/20
-                       data-valid:border-green-500 data-valid:focus:border-green-500 data-valid:focus:ring-green-500/20
+                       data-valid:border-success data-valid:focus:border-success data-valid:focus:ring-success/20
                        transition-all duration-200"
           />
           <button

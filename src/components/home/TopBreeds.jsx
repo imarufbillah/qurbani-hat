@@ -34,8 +34,8 @@ const TopBreeds = async () => {
         </div>
 
         {/* Breeds Grid - Desktop / Scrollable - Mobile */}
-        <div className="overflow-x-auto lg:overflow-visible -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-          <div className="flex lg:grid lg:grid-cols-5 gap-5 lg:gap-6 min-w-max lg:min-w-0">
+        <div className="overflow-x-auto xl:overflow-visible -mx-4 px-4 sm:-mx-6 sm:px-6 xl:mx-0 xl:px-0">
+          <div className="flex xl:grid xl:grid-cols-5 gap-5 xl:gap-6 min-w-max xl:min-w-0">
             {breeds.map((breed) => (
               <BreedCard key={breed.id} breed={breed} />
             ))}
@@ -43,7 +43,7 @@ const TopBreeds = async () => {
         </div>
 
         {/* Scroll Hint for Mobile */}
-        <div className="lg:hidden mt-6 text-center">
+        <div className="xl:hidden mt-6 text-center">
           <p className="font-body text-xs text-muted italic">
             ← Swipe to see more breeds →
           </p>

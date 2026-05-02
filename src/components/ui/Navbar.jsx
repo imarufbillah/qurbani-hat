@@ -137,7 +137,7 @@ const Navbar = () => {
                 <button
                   onClick={handleLogout}
                   className="flex items-center gap-2 px-4 lg:px-5 py-2 text-sm lg:text-base text-white bg-danger border-2 border-danger rounded-lg
-                             hover:bg-[#a93226] hover:border-[#a93226]
+                             hover:bg-danger-hover hover:border-danger-hover
                              hover:-translate-y-0.5 hover:shadow-lg
                              font-semibold transition-all duration-200 active:scale-95"
                   aria-label="Logout"
@@ -259,7 +259,7 @@ const Navbar = () => {
                     <button
                       onClick={handleLogout}
                       className="w-full px-5 py-3 text-center text-sm text-white bg-danger border-2 border-danger rounded-lg
-                                 hover:bg-[#a93226] hover:border-[#a93226] active:scale-95
+                                 hover:bg-danger-hover hover:border-danger-hover active:scale-95
                                  font-semibold transition-all duration-200 shadow-md
                                  flex items-center justify-center gap-2"
                     >

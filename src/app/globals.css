@@ -2,10 +2,13 @@
 
 @theme {
   /* Brand Colors */
-  --color-primary: #2d5016; /* Deep Olive Green */
-  --color-primary-hover: #244010; /* Darker Olive Green */
+  --color-primary: #2d5016;
+  --color-primary-hover: #244010;
 
-  /* Accent (Gradient System) */
+  --color-accent: #d4870a;
+  --color-accent-hover: #b87408;
+
+  /* Gradients */
   --gradient-accent: linear-gradient(
     135deg,
     #c27209 0%,
@@ -21,25 +24,43 @@
     rgba(176, 100, 5, 0.1)
   );
 
-  /* Fallback solid */
-  --color-accent: #d4870a; /* Warm Saffron / Amber */
-  --color-accent-hover: #b87408; /* Darker Saffron */
-
   /* Backgrounds */
-  --color-background: #faf6ee; /* Cream / Parchment */
-  --color-surface: #ffffff; /* Warm White (Cards) */
+  --color-background: #faf6ee;
+  --color-surface: #ffffff;
 
-  /* Text */
-  --color-text-primary: #1a1a1a; /* Deep Charcoal */
-  --color-text-muted: #6b6555; /* Muted Labels */
+  /* Text Colors */
+  --color-text-primary: #1a1a1a;
+  --color-text-muted: #6b6555;
 
-  /* Borders */
-  --color-border: #e8e1d5; /* Subtle Border */
+  /* Border Colors */
+  --color-border: #e8e1d5;
 
-  /* State */
-  --color-danger: #c0392b; /* Error / Danger */
+  /* State Colors */
+  --color-danger: #c0392b;
+  --color-danger-hover: #a93226;
 
-  /* semantic aliases */
+  --color-success: #22c55e;
+  --color-success-bg: #f0fdf4;
+  --color-success-border: #86efac;
+  --color-success-text: #15803d;
+  --color-success-icon: #16a34a;
+
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+  --color-warning-text: #b45309;
+  --color-warning-icon: #d97706;
+
+  --color-info-bg: #eff6ff;
+  --color-info-border: #93c5fd;
+  --color-info-text: #1e40af;
+  --color-info-icon: #2563eb;
+
+  /* Shadows */
+  --shadow-primary: rgba(45, 80, 22, 0.12);
+  --shadow-primary-hover: rgba(45, 80, 22, 0.15);
+  --shadow-accent: rgba(212, 135, 10, 0.4);
+
+  /* Semantic Aliases */
   --color-card: var(--color-surface);
   --color-heading: var(--color-text-primary);
   --color-body: var(--color-text-primary);
@@ -50,6 +71,7 @@
   --font-body: var(--font-inter);
 }
 
+/* Utility Classes */
 @utility bg-gradient-accent {
   background-image: var(--gradient-accent);
 }
@@ -58,7 +80,19 @@
   background-image: var(--gradient-accent-soft);
 }
 
-/* Hero Section Layers */
+@utility shadow-primary {
+  box-shadow: 0 12px 32px var(--shadow-primary);
+}
+
+@utility shadow-primary-hover {
+  box-shadow: 0 16px 40px var(--shadow-primary-hover);
+}
+
+@utility shadow-accent {
+  box-shadow: 0 4px 20px var(--shadow-accent);
+}
+
+/* Hero Section */
 .hero-bg-image {
   background-image: url("/hero-banner.png");
   background-position: center 40%;

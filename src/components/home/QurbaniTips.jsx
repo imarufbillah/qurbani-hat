@@ -58,7 +58,7 @@ const QurbaniTips = () => {
             return (
               <div
                 key={tip.id}
-                className="group relative bg-background border border-border rounded-2xl p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(45,80,22,0.12)] hover:border-accent/40"
+                className="group relative bg-background border border-border rounded-2xl p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1 shadow-primary hover:border-accent/40"
               >
                 {/* Icon Container */}
                 <div className="mb-5">

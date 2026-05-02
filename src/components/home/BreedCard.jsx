@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const BreedCard = ({ breed }) => {
   return (
-    <div className="group relative bg-surface border border-border rounded-2xl overflow-hidden cursor-pointer w-56 lg:w-full transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(45,80,22,0.15)] hover:border-accent/40">
+    <div className="group relative bg-surface border border-border rounded-2xl overflow-hidden cursor-pointer w-56 xl:w-full transition-all duration-300 hover:-translate-y-1.5 shadow-primary-hover hover:border-accent/40">
       {/* Breed Image */}
       <div className="relative h-48 w-full overflow-hidden bg-background">
         <Image

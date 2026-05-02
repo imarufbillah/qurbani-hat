@@ -7,7 +7,7 @@ const AnimalCard = ({ animal }) => {
     animal;
 
   return (
-    <div className="group relative bg-surface border border-border rounded-[14px] overflow-hidden cursor-default w-full transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_16px_40px_rgba(45,80,22,0.15)] hover:border-accent/40">
+    <div className="group relative bg-surface border border-border rounded-[14px] overflow-hidden cursor-default w-full transition-all duration-300 ease-out hover:-translate-y-1.5 shadow-primary-hover hover:border-accent/40">
       {/* Image Section */}
       <div className="relative h-50 w-full overflow-hidden bg-background">
         <Image

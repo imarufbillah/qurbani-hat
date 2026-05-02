@@ -89,7 +89,7 @@ const ProfilePage = async () => {
                 {/* Avatar with Status Badge */}
                 <div className="relative">
                   {user.image ? (
-                    <div className="relative">
+                    <div className="relative w-fit">
                       <Image
                         src={user.image}
                         alt={user.name}
@@ -99,7 +99,7 @@ const ProfilePage = async () => {
                       />
                       {/* Verification Badge */}
                       {user.emailVerified && (
-                        <div className="absolute bottom-1 right-1 w-8 h-8 sm:w-9 sm:h-9 bg-green-500 rounded-full border-4 border-surface flex items-center justify-center shadow-lg">
+                        <div className="absolute bottom-1 right-1 w-8 h-8 sm:w-9 sm:h-9 bg-success rounded-full border-4 border-surface flex items-center justify-center shadow-lg">
                           <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         </div>
                       )}
@@ -113,7 +113,7 @@ const ProfilePage = async () => {
                       </div>
                       {/* Verification Badge */}
                       {user.emailVerified && (
-                        <div className="absolute bottom-1 right-1 w-8 h-8 sm:w-9 sm:h-9 bg-green-500 rounded-full border-4 border-surface flex items-center justify-center shadow-lg">
+                        <div className="absolute bottom-1 right-1 w-8 h-8 sm:w-9 sm:h-9 bg-success rounded-full border-4 border-surface flex items-center justify-center shadow-lg">
                           <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         </div>
                       )}
@@ -129,12 +129,12 @@ const ProfilePage = async () => {
                     </h2>
                     {/* Verification Status Badge */}
                     {user.emailVerified ? (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 rounded-full text-xs font-semibold text-green-700 w-fit">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-success-bg border border-success-border rounded-full text-xs font-semibold text-success-text w-fit">
                         <CheckCircle className="w-3.5 h-3.5" />
                         Verified
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-50 border border-amber-200 rounded-full text-xs font-semibold text-amber-700 w-fit">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-warning-bg border border-warning-border rounded-full text-xs font-semibold text-warning-text w-fit">
                         <XCircle className="w-3.5 h-3.5" />
                         Unverified
                       </span>
@@ -175,41 +175,41 @@ const ProfilePage = async () => {
               {/* Stats Cards */}
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-10">
                 {/* Account Status */}
-                <div className="bg-linear-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-xl p-4 sm:p-5">
+                <div className="bg-linear-to-br from-success-bg to-success-bg border-2 border-success-border rounded-xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
-                    <span className="text-xs sm:text-sm font-medium text-green-700 font-body">
+                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-success-icon" />
+                    <span className="text-xs sm:text-sm font-medium text-success-text font-body">
                       Status
                     </span>
                   </div>
-                  <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-green-800">
+                  <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-success-text">
                     Active
                   </p>
                 </div>
 
                 {/* Account Age */}
-                <div className="bg-linear-to-br from-blue-50 to-cyan-50 border-2 border-blue-200 rounded-xl p-4 sm:p-5">
+                <div className="bg-linear-to-br from-info-bg to-info-bg border-2 border-info-border rounded-xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
-                    <span className="text-xs sm:text-sm font-medium text-blue-700 font-body">
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-info-icon" />
+                    <span className="text-xs sm:text-sm font-medium text-info-text font-body">
                       Member For
                     </span>
                   </div>
-                  <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-blue-800">
+                  <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-info-text">
                     {accountAge === 0 ? "<1" : accountAge} day
                     {accountAge !== 1 ? "s" : ""}
                   </p>
                 </div>
 
                 {/* Email Status */}
-                <div className="col-span-2 lg:col-span-1 bg-linear-to-br from-amber-50 to-orange-50 border-2 border-amber-200 rounded-xl p-4 sm:p-5">
+                <div className="col-span-2 lg:col-span-1 bg-linear-to-br from-warning-bg to-warning-bg border-2 border-warning-border rounded-xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-2">
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600" />
-                    <span className="text-xs sm:text-sm font-medium text-amber-700 font-body">
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-warning-icon" />
+                    <span className="text-xs sm:text-sm font-medium text-warning-text font-body">
                       Email Status
                     </span>
                   </div>
-                  <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-amber-800">
+                  <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-warning-text">
                     {user.emailVerified ? "Verified" : "Pending"}
                   </p>
                 </div>
