@@ -19,20 +19,20 @@ const AnimalCard = ({ animal }) => {
         />
         {/* Hover Overlay */}
         <div className="absolute inset-0 bg-linear-to-t from-primary/20 via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-        {/* Category Badge - Top Left */}
-        <div className="absolute top-3 left-3 bg-primary/90 backdrop-blur-sm text-background font-body text-[11px] font-semibold px-3 py-1.5 rounded-full shadow-lg border border-primary-hover/20">
-          {category}
-        </div>
-
-        {/* Type Badge - Top Right */}
-        <div className="absolute top-3 right-3 bg-gradient-accent text-primary font-body text-[11px] font-bold px-3 py-1.5 rounded-full shadow-lg">
-          {type}
-        </div>
       </div>
 
       {/* Card Body */}
       <div className="p-5">
+        {/* Category and Type Badges */}
+        <div className="flex items-center gap-2 mb-3">
+          <div className="bg-primary/90 text-background font-body text-[11px] font-semibold px-3 py-1.5 rounded-full">
+            {category}
+          </div>
+          <div className="bg-gradient-accent text-primary font-body text-[11px] font-bold px-3 py-1.5 rounded-full">
+            {type}
+          </div>
+        </div>
+
         {/* Name */}
         <h3 className="font-heading text-[18px] font-bold text-heading truncate mb-3.5 group-hover:text-primary transition-colors duration-300">
           {name}
