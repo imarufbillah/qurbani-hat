@@ -6,6 +6,28 @@ import BookingSection from "@/components/animals/BookingSection";
 import RelatedAnimals from "@/components/animals/RelatedAnimals";
 import { notFound } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  
+  const response = await fetch(process.env.ANIMALS_API_URL, {
+    next: { revalidate: 300 },
+  });
+  const data = await response.json();
+  const animal = data.animals.find((a) => a.id === parseInt(id));
+
+  if (!animal) {
+    return {
+      title: "Animal Not Found | QurbaniHat",
+      description: "The animal you're looking for could not be found.",
+    };
+  }
+
+  return {
+    title: `${animal.name} - ${animal.breed} ${animal.type} | QurbaniHat`,
+    description: `${animal.description} Located in ${animal.location}. Weight: ${animal.weight}kg, Age: ${animal.age} years. Price: ৳${animal.price.toLocaleString()}. Book now for Eid-ul-Adha.`,
+  };
+}
+
 const AnimalDetailsPage = async ({ params }) => {
   const { id } = await params;
 

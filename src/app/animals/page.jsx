@@ -1,6 +1,11 @@
 import AnimalsGrid from "@/components/animals/AnimalsGrid";
 import SortControl from "@/components/animals/SortControl";
 
+export const metadata = {
+  title: "All Animals - Browse Qurbani Livestock | QurbaniHat",
+  description: "Browse our complete collection of Qurbani animals. Filter and sort cows, goats, and sheep by price. Find detailed information on breed, weight, age, and location.",
+};
+
 const AllAnimalsPage = async ({ searchParams }) => {
   const response = await fetch(process.env.ANIMALS_API_URL, {
     next: { revalidate: 300 },

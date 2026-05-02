@@ -13,6 +13,11 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+export const metadata = {
+  title: "My Profile - Account Information | QurbaniHat",
+  description: "View and manage your QurbaniHat account information, profile details, and account settings.",
+};
+
 const ProfilePage = async () => {
   // Get session from server-side
   const session = await auth.api.getSession({

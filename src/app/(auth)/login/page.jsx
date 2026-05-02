@@ -2,6 +2,11 @@ import Link from "next/link";
 import LoginForm from "@/components/auth/LoginForm";
 import GoogleSignInButton from "@/components/auth/GoogleSignInButton";
 
+export const metadata = {
+  title: "Login - Sign In to Your Account | QurbaniHat",
+  description: "Sign in to your QurbaniHat account to book animals, manage your profile, and access exclusive features. Login with email or Google.",
+};
+
 const LoginPage = () => {
   return (
     <div className="min-h-dvh bg-background flex items-center justify-center p-4 sm:p-6 lg:p-8 pt-24 sm:pt-28 lg:pt-32">

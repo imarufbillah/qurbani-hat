@@ -2,6 +2,11 @@ import Link from "next/link";
 import RegisterForm from "@/components/auth/RegisterForm";
 import GoogleSignInButton from "@/components/auth/GoogleSignInButton";
 
+export const metadata = {
+  title: "Register - Create Your Account | QurbaniHat",
+  description: "Join QurbaniHat today! Create your account to browse premium livestock, book animals for Qurbani, and manage your profile. Sign up with email or Google.",
+};
+
 const RegisterPage = () => {
   return (
     <div className="min-h-dvh bg-background flex items-center justify-center p-4 sm:p-6 lg:p-8 pt-24 sm:pt-28 lg:pt-32 pb-16">
